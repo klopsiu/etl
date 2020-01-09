@@ -4,43 +4,44 @@ import csv
 import json
 import ast
 import json2table
-
+import os
 
 # api_get = 'https://michal-tests.cledar.pl/api/data'
 # json_data = requests.get(api_get).json()
 
+os.environ['NO_PROXY'] = '127.0.0.1'
 
 def do_nothing():
     pass
 
 def extract():
-    print(requests.get('https://michal-tests.cledar.pl/api/extract').json())
+    print(requests.get('http://127.0.0.1:7676/api/extract').json())
 
 def transform():
-    print(requests.get('https://michal-tests.cledar.pl/api/transform').json())
+    print(requests.get('http://127.0.0.1:7676/api/transform').json())
 
 def load():
-    print(requests.get('https://michal-tests.cledar.pl/api/load').json())
+    print(requests.get('http://127.0.0.1:7676/api/load').json())
 
 
 def saveToFile():
-    response = requests.get('https://michal-tests.cledar.pl/api/data').json()
+    response = requests.get('http://127.0.0.1:7676/api/data').json()
 
     with open('output.json', 'w') as f:
         json.dump(response, f)
 
 def data():
-    print(requests.get('https://michal-tests.cledar.pl/api/data').json())
+    print(requests.get('http://127.0.0.1:7676/api/data').json())
 
 def etl():
-    requests.get('https://michal-tests.cledar.pl/api/extract').json()
-    requests.get('https://michal-tests.cledar.pl/api/transform').json()
-    requests.get('https://michal-tests.cledar.pl/api/load').json()
-    print(requests.get('https://michal-tests.cledar.pl/api/data').json())
+    requests.get('http://127.0.0.1:7676/api/extract').json()
+    requests.get('http://127.0.0.1:7676/api/transform').json()
+    requests.get('http://127.0.0.1:7676/api/load').json()
+    print(requests.get('http://127.0.0.1:7676/api/data').json())
 
 
 def delete():
-    print(requests.delete('https://michal-tests.cledar.pl/api/data').json())
+    print(requests.delete('http://127.0.0.1:7676/api/data').json())
 
 
 class GUI(tk.Tk):
