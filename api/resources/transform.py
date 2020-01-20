@@ -21,7 +21,8 @@ class Transform(Resource):
             f = open("cache/page_{}.txt".format(i), "r+")
             website = f.read()
             soup = BeautifulSoup(website)
-            html_list[i] = soup.findAll("div", {"class": "sc-4el5v8-13 goPzRd"})
+            #html_list[i] = soup.findAll("div", {"class": "sc-4el5v8-13 goPzRd"})
+            html_list[i] = soup.findAll("div", {"class": "sc-1yu46qn-7 cRrTHy sc-2ride2-0 eYsBmG"})
             if len(html_list[i]) < 1:
                 break
             # Save every result set to the file
@@ -36,7 +37,8 @@ class Transform(Resource):
             for one in page:
                 title = one.find("h3")
                 # Searching every rate and parse it.
-                rate = one.find("a", {"class": "sc-4el5v8-16 kIMsrT sc-1u6l9jk-1 ixvhfp sc-673ayz-0 dfQSis"})
+                #rate = one.find("a", {"class": "sc-4el5v8-16 kIMsrT sc-1u6l9jk-1 ixvhfp sc-673ayz-0 dfQSis"})
+                rate = one.find("a", {"class": "sc-1yu46qn-16 tGJLo sc-1ngc1lj-1 eQvjal sc-4ttund-0 kWNYsq"})
                 if rate is None:
                     number_of_products -= 1
                     continue
@@ -44,7 +46,8 @@ class Transform(Resource):
                 if len(converted_rate) < 1:
                     converted_rate = [0]
                 # Split data from ul tag
-                data = one.find("ul", {"class": "sc-1vco2i8-0 sc-4el5v8-15 fLNKyj sc-1vco2i8-1 ZosGi"})
+                #data = one.find("ul", {"class": "sc-1vco2i8-0 sc-4el5v8-15 fLNKyj sc-1vco2i8-1 ZosGi"})
+                data = one.find("ul", {"class": "vb9gxz-0 sc-1yu46qn-15 bhmXit vb9gxz-1 iNfAAG"})
                 if data is None:
                     number_of_products -= 1
                     continue
